@@ -26,15 +26,31 @@ const insertUser = async() => {
         const values = ['Jhon', 'Jhon1234'];
     
         const res = await pool.query( text, values );
+        pool.end();
         console.log( res );
     } catch( err ) {
-        throw new Error( err );
+        console.log( err);
     }
 }
 
-// getBooks();
-insertUser();
+const deleteUser = async() => {
+    try {
+        const text = 'DELETE FROM users WHERE username=$1';
+        const values = ['Jhon'];
+    
+        const res = await pool.query( text, values );
+        pool.end();
+        console.log( res );
+    } catch( err ) {
+        console.log( err );
+    }
+}
 
+
+// getBooks();
+// insertUser();
+
+deleteUser();
 
 
 
